@@ -113,8 +113,8 @@ def pop_dict_keys(data):
 def send_alert(data):
     # token = os.getenv('ROBOT_TOKEN')
     # secret = os.getenv('SECRET')
-    token = "90a3a0dea1e00b0bcf28a696af03673d577ddbc43bea18c89287087feeabb32d"
-    secret = "SECfc35260427e8fa9bc56e8b1a83ed1b5ee36975fe55845403fdfcfb9df0ea7f7f"
+    token = ""
+    secret = ""
     if not token or not secret:
         print('you must set ROBOT_TOKEN or SECRET env')
         return
