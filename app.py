@@ -30,7 +30,9 @@ format_alert = {
     "expression": "监控表达式",
     "alert_name": "报警名称",
     "startsAt": "开始时间",
-    "endsAt": "结束时间"
+    "endsAt": "结束时间",
+    "threshold_value": "阈值",
+    "service": "kubernetes服务"
 }
 
 
