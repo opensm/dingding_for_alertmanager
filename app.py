@@ -135,7 +135,7 @@ def send_alert(data):
             alert_data = pop_dict_keys(data=alert_data)
             if data['status'] == 'resolved':
                 status = "已恢复"
-            elif data['status'] == 'critical':
+            elif data['status'] == 'firing':
                 status = "告警中"
             else:
                 status = "未知"
