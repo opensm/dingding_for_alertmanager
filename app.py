@@ -144,7 +144,7 @@ def send_alert(data):
             send_data = {
                 "msgtype": "markdown",
                 "markdown": {
-                    "title": "正线环境K8S报警",
+                    "title": "{0}:正线环境K8S告警".format(data['status']),
                     "text": alert_string
                 },
                 "at": {
