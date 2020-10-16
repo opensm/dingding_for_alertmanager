@@ -38,8 +38,8 @@ format_alert = {
 def send():
     if request.method == 'POST':
         post_data = request.get_data()
-        format_data = bytes2json(data_bytes=post_data)
-        send_alert(data=format_data)
+        data = bytes2json(data_bytes=post_data)
+        send_alert(data=data)
         return 'success'
     else:
         return 'weclome to use prometheus alertmanager dingtalk webhook server!'
@@ -125,7 +125,6 @@ def send_alert(data):
 
     # 报警类别聚合
     alert_dict = alert_count(data=data['alerts'])
-    print(alert_dict)
     for k, v in alert_dict.items():
         for output in data['alerts']:
             alert_data = output['labels']
@@ -134,6 +133,7 @@ def send_alert(data):
                 continue
             alert_string = ""
             alert_data = pop_dict_keys(data=alert_data)
+            alert_data['status'] = data['status']
             for key, value in alert_data.items():
                 if key in format_alert:
                     format_key = format_alert[key]
