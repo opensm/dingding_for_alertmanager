@@ -133,7 +133,13 @@ def send_alert(data):
                 continue
             alert_string = ""
             alert_data = pop_dict_keys(data=alert_data)
-            alert_data['status'] = data['status']
+            if data['status'] == 'resolved':
+                status = "已恢复"
+            elif data['status'] == 'critical':
+                status = "告警中"
+            else:
+                status = "未知"
+            alert_data['status'] = status
             for key, value in alert_data.items():
                 if key in format_alert:
                     format_key = format_alert[key]
@@ -144,7 +150,7 @@ def send_alert(data):
             send_data = {
                 "msgtype": "markdown",
                 "markdown": {
-                    "title": "{0}:正线环境K8S告警".format(data['status']),
+                    "title": "{0}，正线环境K8S告警".format(status),
                     "text": alert_string
                 },
                 "at": {
